@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dem0ahn5atkeo"]
+
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_n8duw"]
+[ext_resource type="Theme" uid="uid://dn8lv55qwyhhs" path="res://Themes/base_theme.tres" id="2_461be"]
+[ext_resource type="Theme" uid="uid://bbuk6klkkl0vv" path="res://Themes/ui.tres" id="2_efmjk"]
+
+[node name="Hud" type="Node2D"]
+script = ExtResource("1_n8duw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="end" type="Button" parent="CanvasLayer"]
+offset_left = 1021.0
+offset_top = 264.0
+offset_right = 1058.0
+offset_bottom = 298.0
+theme = ExtResource("2_461be")
+
+[node name="wager" type="Label" parent="CanvasLayer"]
+offset_left = 813.0
+offset_top = 457.0
+offset_right = 979.0
+offset_bottom = 473.0
+theme = ExtResource("2_efmjk")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "CURRENT WAGER:"
+
+[node name="moves" type="Label" parent="CanvasLayer"]
+offset_left = 22.0
+offset_top = 17.0
+offset_right = 202.0
+offset_bottom = 94.0
+theme = ExtResource("2_efmjk")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[connection signal="pressed" from="CanvasLayer/end" to="." method="_on_end_pressed"]

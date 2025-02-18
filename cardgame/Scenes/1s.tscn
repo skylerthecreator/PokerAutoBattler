@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfo3xu85tc20y"]
+
+[ext_resource type="Script" path="res://Scripts/chips.gd" id="1_ikicp"]
+[ext_resource type="Texture2D" uid="uid://0jgcdanhh7kh" path="res://Assets/cards and chips/chips.png" id="1_unkla"]
+[ext_resource type="Theme" uid="uid://bbuk6klkkl0vv" path="res://Themes/ui.tres" id="2_fnybk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23jip"]
+radius = 31.0
+height = 70.0
+
+[node name="1s" type="Area2D"]
+script = ExtResource("1_ikicp")
+
+[node name="chip" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_unkla")
+region_enabled = true
+region_rect = Rect2(1, 1, 62, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_23jip")
+
+[node name="value" type="Label" parent="."]
+modulate = Color(0.0392157, 0.439216, 0.239216, 1)
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 18.0
+theme = ExtResource("2_fnybk")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,134 @@
+[gd_scene load_steps=17 format=3 uid="uid://5ewyh50tusk8"]
+
+[ext_resource type="PackedScene" uid="uid://66bifcjspcbt" path="res://Scenes/board_enemy.tscn" id="3_gldqb"]
+[ext_resource type="PackedScene" uid="uid://34clx7lhwuri" path="res://Scenes/hand.tscn" id="5_dwd24"]
+[ext_resource type="PackedScene" uid="uid://27pr72xb0ux4" path="res://Scenes/player_deck.tscn" id="5_l3u37"]
+[ext_resource type="Texture2D" uid="uid://cfyh8h6diylr3" path="res://Assets/cards and chips/cardback.png" id="6_6ebvh"]
+[ext_resource type="PackedScene" uid="uid://cbo48ysvifcsy" path="res://Scenes/board_self.tscn" id="6_gl48p"]
+[ext_resource type="PackedScene" uid="uid://dem0ahn5atkeo" path="res://Scenes/hud.tscn" id="6_xxmjk"]
+[ext_resource type="PackedScene" uid="uid://dfo3xu85tc20y" path="res://Scenes/1s.tscn" id="7_h2qco"]
+[ext_resource type="PackedScene" uid="uid://ddpac2hbhdg37" path="res://Scenes/5s.tscn" id="8_bmfto"]
+[ext_resource type="PackedScene" uid="uid://ctqss7h1rqv1i" path="res://Scenes/25s.tscn" id="9_w6ows"]
+[ext_resource type="PackedScene" uid="uid://lw6fd31ih4g6" path="res://Scenes/50s.tscn" id="10_501p4"]
+[ext_resource type="PackedScene" uid="uid://c2srapurm8ff0" path="res://Scenes/100s.tscn" id="11_jbyvk"]
+[ext_resource type="PackedScene" uid="uid://bqswirvyitbne" path="res://Scenes/500s.tscn" id="12_rvme6"]
+[ext_resource type="PackedScene" uid="uid://cwlvvps7uep4v" path="res://Scenes/discard.tscn" id="13_rlnti"]
+
+[sub_resource type="Animation" id="Animation_abtip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(45, 67)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.01136, 1.08615)]
+}
+
+[sub_resource type="Animation" id="Animation_q4dwj"]
+resource_name = "draw"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(44, 67), Vector2(-337, 194)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.01136, 1.08615), Vector2(-0.0114927, 1.08615)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ne2tj"]
+_data = {
+"RESET": SubResource("Animation_abtip"),
+"draw": SubResource("Animation_q4dwj")
+}
+
+[node name="Game" type="Node2D"]
+
+[node name="bg" type="ColorRect" parent="."]
+offset_right = 1151.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.207843, 0.396078, 0.301961, 1)
+
+[node name="Hud" parent="." instance=ExtResource("6_xxmjk")]
+
+[node name="board_enemy" parent="." instance=ExtResource("3_gldqb")]
+position = Vector2(575, 165)
+
+[node name="board_self" parent="." instance=ExtResource("6_gl48p")]
+position = Vector2(576, 363)
+
+[node name="hand" parent="." instance=ExtResource("5_dwd24")]
+position = Vector2(576, 571)
+
+[node name="player_deck" parent="." instance=ExtResource("5_l3u37")]
+offset_left = 1002.0
+offset_top = 335.0
+offset_right = 1091.0
+offset_bottom = 487.0
+
+[node name="flippedcard" type="Sprite2D" parent="player_deck"]
+position = Vector2(45, 67)
+scale = Vector2(1.01136, 1.08615)
+texture = ExtResource("6_6ebvh")
+region_enabled = true
+region_rect = Rect2(88, 0, 88, 124)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player_deck/flippedcard"]
+libraries = {
+"": SubResource("AnimationLibrary_ne2tj")
+}
+
+[node name="1s" parent="." instance=ExtResource("7_h2qco")]
+position = Vector2(934, 524)
+
+[node name="5s" parent="." instance=ExtResource("8_bmfto")]
+position = Vector2(992, 524)
+
+[node name="25s" parent="." instance=ExtResource("9_w6ows")]
+position = Vector2(1050, 524)
+
+[node name="50s" parent="." instance=ExtResource("10_501p4")]
+position = Vector2(934, 584)
+
+[node name="100s" parent="." instance=ExtResource("11_jbyvk")]
+position = Vector2(992, 584)
+
+[node name="500s" parent="." instance=ExtResource("12_rvme6")]
+position = Vector2(1050, 584)
+
+[node name="discard" parent="." instance=ExtResource("13_rlnti")]
+position = Vector2(112, 444)

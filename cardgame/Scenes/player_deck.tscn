@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://27pr72xb0ux4"]
+
+[ext_resource type="FontFile" uid="uid://ci7nqmdco3yeg" path="res://Assets/font/Varnished.ttf" id="1_sefv6"]
+[ext_resource type="Script" path="res://Scripts/player_deck.gd" id="2_gb6mf"]
+[ext_resource type="Texture2D" uid="uid://cj4hlh5bkydd8" path="res://Assets/cards and chips/deckremoved.png" id="2_gheup"]
+
+[sub_resource type="Theme" id="Theme_3ullb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8883"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nttmd"]
+texture = ExtResource("2_gheup")
+region_rect = Rect2(0, 0, 88, 140)
+modulate_color = Color(0.74558, 0.74558, 0.74558, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_otek5"]
+texture = ExtResource("2_gheup")
+region_rect = Rect2(0, 0, 88, 140)
+modulate_color = Color(0.509286, 0.509286, 0.509286, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxfpj"]
+texture = ExtResource("2_gheup")
+region_rect = Rect2(0, 0, 88, 140)
+
+[node name="player_deck" type="Button"]
+offset_right = 5.0
+offset_bottom = 8.0
+theme = SubResource("Theme_3ullb")
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("1_sefv6")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8883")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nttmd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_otek5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_sxfpj")
+script = ExtResource("2_gb6mf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

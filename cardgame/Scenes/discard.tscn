@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwlvvps7uep4v"]
+
+[ext_resource type="Script" path="res://Scripts/discard.gd" id="1_uxts0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gaxf"]
+size = Vector2(40, 198)
+
+[node name="discard" type="Area2D" groups=["discard"]]
+script = ExtResource("1_uxts0")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -19.0
+offset_top = -98.0
+offset_right = 21.0
+offset_bottom = 99.0
+mouse_filter = 2
+color = Color(0.133196, 0.133196, 0.133196, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -14.0
+offset_top = -94.0
+offset_right = 14.0
+offset_bottom = 94.0
+mouse_filter = 2
+color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_5gaxf")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

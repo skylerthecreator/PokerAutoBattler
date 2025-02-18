@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqswirvyitbne"]
+
+[ext_resource type="Script" path="res://Scripts/chips.gd" id="1_uhkb3"]
+[ext_resource type="Texture2D" uid="uid://0jgcdanhh7kh" path="res://Assets/cards and chips/chips.png" id="2_xh6nw"]
+[ext_resource type="Theme" uid="uid://bbuk6klkkl0vv" path="res://Themes/ui.tres" id="3_2u40i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5fl2"]
+radius = 31.0
+height = 70.0
+
+[node name="500s" type="Area2D"]
+script = ExtResource("1_uhkb3")
+
+[node name="chip" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_xh6nw")
+region_enabled = true
+region_rect = Rect2(129, 73, 62, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_l5fl2")
+
+[node name="value" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -14.0
+offset_right = 26.0
+offset_bottom = 18.0
+theme = ExtResource("3_2u40i")
+text = "500
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

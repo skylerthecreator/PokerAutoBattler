@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://66bifcjspcbt"]
+
+[ext_resource type="Script" path="res://Scripts/board_enemy.gd" id="1_i4v37"]
+[ext_resource type="PackedScene" uid="uid://dcxkebepj6l3q" path="res://Scenes/board_slot.tscn" id="2_ansaw"]
+
+[node name="board_enemy" type="StaticBody2D"]
+script = ExtResource("1_i4v37")
+
+[node name="board_slot" parent="." instance=ExtResource("2_ansaw")]
+position = Vector2(-222, 0)
+
+[node name="board_slot2" parent="." instance=ExtResource("2_ansaw")]
+position = Vector2(-111, 0)
+
+[node name="board_slot3" parent="." instance=ExtResource("2_ansaw")]
+
+[node name="board_slot4" parent="." instance=ExtResource("2_ansaw")]
+position = Vector2(111, 0)
+
+[node name="board_slot5" parent="." instance=ExtResource("2_ansaw")]
+position = Vector2(222, 0)

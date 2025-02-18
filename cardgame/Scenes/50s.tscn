@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://lw6fd31ih4g6"]
+
+[ext_resource type="Script" path="res://Scripts/chips.gd" id="1_hpqfj"]
+[ext_resource type="Texture2D" uid="uid://0jgcdanhh7kh" path="res://Assets/cards and chips/chips.png" id="1_iw8i2"]
+[ext_resource type="Theme" uid="uid://bbuk6klkkl0vv" path="res://Themes/ui.tres" id="2_i2xbu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4lrp6"]
+radius = 31.0
+height = 70.0
+
+[node name="50s" type="Area2D"]
+script = ExtResource("1_hpqfj")
+
+[node name="chip" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_iw8i2")
+region_enabled = true
+region_rect = Rect2(193, 1, 62, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_4lrp6")
+
+[node name="value" type="Label" parent="."]
+modulate = Color(0.0705882, 0.0705882, 0.0705882, 1)
+offset_left = -19.0
+offset_top = -9.0
+offset_right = 21.0
+offset_bottom = 14.0
+theme = ExtResource("2_i2xbu")
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

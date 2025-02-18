@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbo48ysvifcsy"]
+
+[ext_resource type="Script" path="res://Scripts/board_self.gd" id="1_gufpp"]
+[ext_resource type="PackedScene" uid="uid://dcxkebepj6l3q" path="res://Scenes/board_slot.tscn" id="2_b5s8n"]
+
+[node name="board_self" type="StaticBody2D"]
+script = ExtResource("1_gufpp")
+
+[node name="board_slot" parent="." instance=ExtResource("2_b5s8n")]
+position = Vector2(-222, 0)
+
+[node name="board_slot2" parent="." instance=ExtResource("2_b5s8n")]
+position = Vector2(-111, 0)
+
+[node name="board_slot3" parent="." instance=ExtResource("2_b5s8n")]
+
+[node name="board_slot4" parent="." instance=ExtResource("2_b5s8n")]
+position = Vector2(111, 0)
+
+[node name="board_slot5" parent="." instance=ExtResource("2_b5s8n")]
+position = Vector2(222, 0)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

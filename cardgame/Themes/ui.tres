@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bbuk6klkkl0vv"]
+
+[ext_resource type="FontFile" uid="uid://b7kafa3idq58r" path="res://Assets/font/quaver.ttf" id="1_ylghp"]
+
+[resource]
+default_font = ExtResource("1_ylghp")
+default_font_size = 16
+Label/colors/font_color = Color(0, 0, 0, 1)
