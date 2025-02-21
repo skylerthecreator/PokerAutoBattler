@@ -46,7 +46,6 @@ func _process(_delta):
 	
 	if FRAME:
 		art.frame = FRAME
-		cardback.frame = 0
 		cst.text = str(curr_cost)
 		atk.text = str(curr_atk)
 		hp.text = str(curr_hp)

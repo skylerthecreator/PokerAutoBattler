@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dtsnwvy23uft1"]
+[gd_scene load_steps=78 format=3 uid="uid://dtsnwvy23uft1"]
 
 [ext_resource type="Script" path="res://Scripts/card_enemy.gd" id="1_luhry"]
 [ext_resource type="Texture2D" uid="uid://cfyh8h6diylr3" path="res://Assets/cards and chips/cardback.png" id="2_ly0h6"]
@@ -9,21 +9,6 @@
 [ext_resource type="Shader" path="res://Shaders/cstshader.gdshader" id="7_xorad"]
 [ext_resource type="Shader" path="res://Shaders/atkshader.gdshader" id="8_w7vg6"]
 [ext_resource type="Theme" uid="uid://bbuk6klkkl0vv" path="res://Themes/ui.tres" id="9_s1ffh"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_81rpo"]
-atlas = ExtResource("2_ly0h6")
-region = Rect2(0, 0, 88, 124)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4yuaq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_81rpo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x2ldx"]
 shader = ExtResource("3_alusj")
@@ -689,11 +674,13 @@ _data = {
 [node name="card_enemy" type="Area2D"]
 script = ExtResource("1_luhry")
 
-[node name="cardback" type="AnimatedSprite2D" parent="."]
+[node name="cardback" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(3.57628e-07, -2.14577e-06)
 scale = Vector2(0.909091, 0.967742)
-sprite_frames = SubResource("SpriteFrames_4yuaq")
+texture = ExtResource("2_ly0h6")
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 124)
 
 [node name="art" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_x2ldx")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://b5yfx4imh405"]
+[gd_scene load_steps=78 format=3 uid="uid://b5yfx4imh405"]
 
 [ext_resource type="Script" path="res://Scripts/card.gd" id="1_x0awn"]
 [ext_resource type="Texture2D" uid="uid://cfyh8h6diylr3" path="res://Assets/cards and chips/cardback.png" id="2_6mpmq"]
@@ -9,21 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cicbrhg08uxs6" path="res://Assets/cards and chips/cardsbw.png" id="4_iy0pe"]
 [ext_resource type="Texture2D" uid="uid://cjaueafngifcj" path="res://Assets/UI/rpgUI.png" id="4_wxs2q"]
 [ext_resource type="Theme" uid="uid://bbuk6klkkl0vv" path="res://Themes/ui.tres" id="5_2h61w"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0net"]
-atlas = ExtResource("2_6mpmq")
-region = Rect2(88, 0, 88, 124)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cdff3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x0net")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y5f5c"]
 shader = ExtResource("2_mknst")
@@ -689,11 +674,13 @@ _data = {
 [node name="card" type="Area2D" groups=["card"]]
 script = ExtResource("1_x0awn")
 
-[node name="cardback" type="AnimatedSprite2D" parent="."]
+[node name="cardback" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(3.57628e-07, -2.14577e-06)
 scale = Vector2(0.909091, 0.967742)
-sprite_frames = SubResource("SpriteFrames_cdff3")
+texture = ExtResource("2_6mpmq")
+region_enabled = true
+region_rect = Rect2(88, 0, 88, 124)
 
 [node name="art" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_y5f5c")

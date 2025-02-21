@@ -43,6 +43,12 @@ func _process(_delta):
 		cst.text = str(curr_cost)
 		atk.text = str(curr_atk)
 		hp.text = str(curr_hp)
+	if gm.turn_ended == false:
+		cardback.visible = true
+		art.visible = false
+	if gm.test:
+		qfa.speed_scale = -1
+		qfa.play("die")
 	if curr_hp <= 0 and !atk_ani.is_playing() and !dead:
 		qfa.speed_scale = 1
 		qfa.play("die")

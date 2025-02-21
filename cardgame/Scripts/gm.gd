@@ -94,6 +94,7 @@ func end_turn():
 	cards_self = get_cards(BOARD)
 	cards_enemy = get_cards(BOARD_ENEMY)
 	turn_ended = true
+	test = true
 	input_disabled = true
 func get_cards(brd):
 	var cs = []
