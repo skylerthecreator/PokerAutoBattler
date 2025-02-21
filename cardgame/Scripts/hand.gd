@@ -17,15 +17,16 @@ extends Area2D
 
 const CARD = preload("res://Scenes/card.tscn")
 
+var last_hand_size = 0
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if gm.drew != null:
 		draw()
-		gm.drew = null
-	if gm.moved != null:
+	if len(gm.HAND) != last_hand_size:
 		show_hand()
-		gm.moved = null
+		last_hand_size = len(gm.HAND)
 
 
 func draw():
@@ -33,8 +34,8 @@ func draw():
 	c.init(gm.drew)
 	owner.add_child(c)
 	gm.HAND.append(c)
-	show_hand()
 	c.curr_pos = c.global_position
+	gm.drew = null
 
 func update_pos(hc, cp):
 	hc.global_position = cp.global_position
@@ -76,3 +77,12 @@ func show_hand():
 		update_pos(gm.HAND[4], card5)
 		update_pos(gm.HAND[5], card6)
 		update_pos(gm.HAND[6], card7)
+
+
+func _on_mouse_entered():
+	if gm.is_dragging != null:
+		gm.is_dragging.slot_ref = self
+
+func _on_mouse_exited():
+	if gm.is_dragging != null:
+		gm.is_dragging.slot_ref = null
