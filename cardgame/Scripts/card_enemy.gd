@@ -11,6 +11,7 @@ extends Area2D
 @onready var qfa = $queue_free_animation
 @onready var animation_end = $animation_end
 @onready var cardback = $cardback
+@onready var dmg_taken = $dmg_taken
 
 
 
@@ -66,9 +67,10 @@ func init(info):
 
 func attack(card):
 	atk_target = card
+	card.dmg_taken.text = "-" + str(curr_atk)
 	atk_delay.start()
 	animation_end.start()
-	card.atk_ani.play("attack")
+	card.atk_ani.play("damage")
 	atk_ani.play("attack")
 
 
@@ -86,7 +88,6 @@ func reset():
 	dead = false
 	
 func _on_atk_delay_timeout():
-	curr_hp -= atk_target.curr_atk
 	atk_target.curr_hp -= curr_atk
 
 

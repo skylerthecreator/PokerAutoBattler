@@ -78,18 +78,12 @@ _data = {
 [node name="Game" type="Node2D"]
 
 [node name="bg" type="ColorRect" parent="."]
-offset_right = 1151.0
+offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0.207843, 0.396078, 0.301961, 1)
 
 [node name="Hud" parent="." instance=ExtResource("6_xxmjk")]
-
-[node name="board_enemy" parent="." instance=ExtResource("3_gldqb")]
-position = Vector2(575, 165)
-
-[node name="board_self" parent="." instance=ExtResource("6_gl48p")]
-position = Vector2(576, 363)
 
 [node name="hand" parent="." instance=ExtResource("5_dwd24")]
 position = Vector2(576, 571)
@@ -132,3 +126,9 @@ position = Vector2(1050, 584)
 
 [node name="discard" parent="." instance=ExtResource("13_rlnti")]
 position = Vector2(112, 444)
+
+[node name="board_enemy" parent="." instance=ExtResource("3_gldqb")]
+position = Vector2(575, 165)
+
+[node name="board_self" parent="." instance=ExtResource("6_gl48p")]
+position = Vector2(576, 363)

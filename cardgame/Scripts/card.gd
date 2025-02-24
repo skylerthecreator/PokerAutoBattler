@@ -11,6 +11,7 @@ extends Area2D
 @onready var qfa = $queue_free_animation
 @onready var animation_end = $animation_end
 @onready var cardback = $cardback
+@onready var dmg_taken = $dmg_taken
 
 
 
@@ -43,7 +44,8 @@ var dead = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	#debug.text = str(gm.hovering, hovering, focus)
-	
+	#material.set_shader_parameter("mouse_position",get_global_mouse_position())
+	#material.set_shader_parameter("sprite_position",global_position)
 	if FRAME:
 		art.frame = FRAME
 		cst.text = str(curr_cost)
@@ -131,9 +133,10 @@ func init(info):
 
 func attack(card):
 	atk_target = card
+	card.dmg_taken.text = "-" + str(curr_atk)
 	atk_delay.start()
 	animation_end.start()
-	card.atk_ani.play("attack")
+	card.atk_ani.play("damage")
 	atk_ani.play("attack")
 
 
@@ -157,7 +160,6 @@ func reset():
 	dead = false
 	
 func _on_atk_delay_timeout():
-	curr_hp -= atk_target.curr_atk
 	atk_target.curr_hp -= curr_atk
 
 

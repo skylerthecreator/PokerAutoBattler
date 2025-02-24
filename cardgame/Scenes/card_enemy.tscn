@@ -1,24 +1,13 @@
-[gd_scene load_steps=78 format=3 uid="uid://dtsnwvy23uft1"]
+[gd_scene load_steps=77 format=3 uid="uid://dtsnwvy23uft1"]
 
 [ext_resource type="Script" path="res://Scripts/card_enemy.gd" id="1_luhry"]
 [ext_resource type="Texture2D" uid="uid://cfyh8h6diylr3" path="res://Assets/cards and chips/cardback.png" id="2_ly0h6"]
-[ext_resource type="Shader" path="res://Shaders/card.gdshader" id="3_alusj"]
 [ext_resource type="Texture2D" uid="uid://cicbrhg08uxs6" path="res://Assets/cards and chips/cardsbw.png" id="4_bn8m8"]
 [ext_resource type="Shader" path="res://Shaders/hpshader.gdshader" id="5_re38h"]
 [ext_resource type="Texture2D" uid="uid://cjaueafngifcj" path="res://Assets/UI/rpgUI.png" id="6_4tfm0"]
 [ext_resource type="Shader" path="res://Shaders/cstshader.gdshader" id="7_xorad"]
 [ext_resource type="Shader" path="res://Shaders/atkshader.gdshader" id="8_w7vg6"]
 [ext_resource type="Theme" uid="uid://bbuk6klkkl0vv" path="res://Themes/ui.tres" id="9_s1ffh"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2ldx"]
-shader = ExtResource("3_alusj")
-shader_parameter/target_color = Color(0.101961, 0.0980392, 0.196078, 1)
-shader_parameter/replace_color = null
-shader_parameter/target_color2 = null
-shader_parameter/replace_color2 = null
-shader_parameter/target_color3 = null
-shader_parameter/replace_color3 = null
-shader_parameter/tolerance = 0.1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_so7qu"]
 atlas = ExtResource("4_bn8m8")
@@ -458,26 +447,50 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("art:rotation")
+tracks/0/path = NodePath("art:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(2, 2)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("art:scale")
+tracks/1/path = NodePath("art:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2, 2)]
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("art:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("dmg_taken:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_nfndv"]
@@ -486,32 +499,97 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("art:rotation")
+tracks/0/path = NodePath("art:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.05, 0.1, 0.2, 0.3, 0.4, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.174533, 0.174533, -0.174533, 0.174533, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("art:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.45, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(2, 2), Vector2(2.5, 2.5), Vector2(2.5, 2.5), Vector2(2, 2)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("art:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.1, 0.2, 0.3, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.174533, -0.174533, 0.174533, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("art:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.466667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_36tfg"]
+resource_name = "damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("art:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2.5, 2.5), Vector2(2.5, 2.5), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("art:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.1, 0.2, 0.3, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.174533, -0.174533, 0.174533, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("art:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.466667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("dmg_taken:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xr4jo"]
 _data = {
 "RESET": SubResource("Animation_2iba7"),
-"attack": SubResource("Animation_nfndv")
+"attack": SubResource("Animation_nfndv"),
+"damage": SubResource("Animation_36tfg")
 }
 
 [sub_resource type="Animation" id="Animation_jxn4n"]
@@ -682,8 +760,20 @@ texture = ExtResource("2_ly0h6")
 region_enabled = true
 region_rect = Rect2(0, 0, 88, 124)
 
+[node name="dmg_taken" type="Label" parent="."]
+visible = false
+offset_left = -39.0
+offset_top = -122.0
+offset_right = 39.0
+offset_bottom = -82.0
+theme = ExtResource("9_s1ffh")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "-1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="art" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_x2ldx")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_vl3rv")
 

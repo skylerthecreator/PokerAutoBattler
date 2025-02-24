@@ -1,8 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://dem0ahn5atkeo"]
+[gd_scene load_steps=6 format=3 uid="uid://dem0ahn5atkeo"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_n8duw"]
 [ext_resource type="Theme" uid="uid://dn8lv55qwyhhs" path="res://Themes/base_theme.tres" id="2_461be"]
 [ext_resource type="Theme" uid="uid://bbuk6klkkl0vv" path="res://Themes/ui.tres" id="2_efmjk"]
+[ext_resource type="Shader" path="res://Shaders/static.gdshader" id="4_680tf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_txi26"]
+shader = ExtResource("4_680tf")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 3.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.00100005
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = true
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [node name="Hud" type="Node2D"]
 script = ExtResource("1_n8duw")
@@ -35,19 +60,24 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="cd" type="Label" parent="CanvasLayer"]
 offset_right = 1152.0
-offset_bottom = 648.0
+offset_bottom = 532.0
 theme = ExtResource("2_efmjk")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 48
-text = "3
-
-
-"
+text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="countdown" type="Timer" parent="CanvasLayer"]
 one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+top_level = true
+material = SubResource("ShaderMaterial_txi26")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.298039)
 
 [connection signal="pressed" from="CanvasLayer/end" to="." method="_on_end_pressed"]
 [connection signal="timeout" from="CanvasLayer/countdown" to="." method="_on_timer_timeout"]
